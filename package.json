@@ -1,0 +1,16 @@
+{
+  "name": "backend-uno",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src"
+  },
+  "author": "maxicozy",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "socket.io": "^3.1.0"
+  }
+}
