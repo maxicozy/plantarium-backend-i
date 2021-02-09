@@ -35,8 +35,8 @@ async function start() {
     const gardenId = devGarden?._id ?? Number.parseInt(req.headers.authorization ?? '')
 
       if(!gardenId) {
-        // Create new empty garden
-        console.log('Register new garden')
+        // kreiere neuen leeren Garten
+        console.log('Registriere neuen Garten')
         const newGarden = await Garden.create({ name: 'Dev' })
         socket.send(JSON.stringify({ messageType: 'register', id: newGarden._id }))
       }
@@ -47,14 +47,17 @@ async function start() {
         const { messageType, ...data } = JSON.parse(msg)
 
         if(messageType === 'sensorData') {
+          // Empfing Sensordaten
           
+          // Modul finden oder sonst neues erstellen
           const findBy = { garden: gardenId, position: data.position }
           const mod = await Module.findOne(findBy) ?? await Module.create({ 
             ...findBy,
             plant: data.plant,
           })
 
-          SensorData.create({ ...data, module: mod })
+          // Sensordaten einf%$/(deln 🚛
+          SensorData.create({ ...data, time: new Date(data.time), module: mod })
           console.log(data);
         
         }

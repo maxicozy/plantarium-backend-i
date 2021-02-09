@@ -3,7 +3,7 @@ const { Schema, model } = mongoose
 
 const schema = new Schema({
   time: {
-    type: Number,
+    type: Date,
     required: true,
   },
   waterLevel: {
