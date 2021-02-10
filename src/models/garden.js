@@ -5,6 +5,7 @@ const schema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true
   },
   modules: [{
     type: Schema.Types.ObjectId,
