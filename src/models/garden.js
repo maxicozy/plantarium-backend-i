@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 const { Schema, model } = mongoose
 
+//anlegen des Gartenschemas
 const schema = new Schema({
   name: {
     type: String,
@@ -8,6 +9,7 @@ const schema = new Schema({
     unique: true
   },
   modules: [{
+    //hier kommt die id vom modul rein
     type: Schema.Types.ObjectId,
     ref: 'module',
   }]

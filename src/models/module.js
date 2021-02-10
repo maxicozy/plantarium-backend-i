@@ -14,10 +14,12 @@ const schema = new Schema({
     type: Date,
   },
   garden: {
+    //ids des gartens aus dem die module kommen
     type: Schema.Types.ObjectId,
     ref: 'garden',
   },
   sensorData: [{
+    //id der sensordaten des Moduls
     type: Schema.Types.ObjectId,
     ref: 'sensorData',
   }]

@@ -10,13 +10,14 @@ const schema = new Schema({
     type: Number,
     required: true,
   },
-  ec: {
+  tds: {
     type: Number,
   },
   ph: {
     type: Number,
   },
   module: {
+    //id des moduls aus dem die sensordaten kommen
     type: Schema.Types.ObjectId,
     ref: 'module',
   }

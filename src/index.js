@@ -67,6 +67,7 @@ async function start() {
 
   });
 
+  // server starten
   app.listen(PORT, () => {
     console.log("Applikation hört zu auf Hafen " + PORT + "!");
   });
