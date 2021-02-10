@@ -24,18 +24,15 @@ async function start() {
   await mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, autoIndex: DEV })    
     .then(() => console.log('Erfolgreich an Datenbank angeschlossen!'))
     .catch(err => console.log(err));
-  
-  app.get('/', (_, res) => {
-      res.status(200).send();
-  });
 
-  app.ws('/', async (socket, req) => {
+  app.ws('/socket', async (socket, req) => {
 
+    //Aus Testzwecken und weil es noch keinen Setup prozess gibt kommen aktuell alle Daten in den Dev-Garden
     const devGarden = process.env.DEV_GARDEN === 'true' ? await Garden.findOne() : null
     const gardenId = devGarden?._id ?? Number.parseInt(req.headers.authorization ?? '')
 
       if(!gardenId) {
-        // kreiere neuen leeren Garten
+        // kreiere neuen leeren Garten, wenn er zum ersten mal Daten ans backend schickt
         console.log('Registriere neuen Garten')
         const newGarden = await Garden.create({ name: 'Dev' })
         socket.send(JSON.stringify({ messageType: 'register', id: newGarden._id }))
@@ -56,7 +53,7 @@ async function start() {
             plant: data.plant,
           })
 
-          // Sensordaten einf%$/(deln 🚛
+          // Sensordaten einfaedeln
           SensorData.create({ ...data, time: new Date(data.time), module: mod })
           console.log(data);
         

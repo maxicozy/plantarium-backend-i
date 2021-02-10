@@ -1,0 +1,9 @@
+{
+   "watch": [
+      "src",
+      ".env",
+      "package.json"
+   ],
+   "ext": "js",
+   "exec": "npm run start"
+}
